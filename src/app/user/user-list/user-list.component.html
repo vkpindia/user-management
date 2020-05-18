@@ -1,1 +1,30 @@
-<p>user-list works!</p>
+<div class="container">
+  <div class="heading">
+    <h4 class="list-title"><span class="table-caption">User List</span></h4>
+    <a href="javascript:void(0)" title="Add"><span class="fa fa-plus-circle" style="color: blue; font-size: 30px; cursor: pointer;"></span></a>
+  </div>
+   <table class="table table-striped">
+     <thead class="table-head">
+       <th>Name</th>
+       <th>Gender</th>
+       <th>Age</th>
+       <th>Email</th>
+       <th>Phone</th>
+       <th>City</th>
+       <th>Actions</th>
+     </thead>
+     <tbody>
+       <tr *ngFor="let list of usersList">
+         <td><span *ngIf="list.name; else dash">{{list.name}}</span></td>
+         <td><span *ngIf="list.gender; else dash">{{list.gender}}</span></td>
+         <td><span *ngIf="list.age; else dash">{{list.age}}</span></td>
+         <td><span *ngIf="list.email; else dash">{{list.email}}</span></td>
+         <td><span *ngIf="list.phone; else dash">{{list.phone}}</span></td>
+         <td><span *ngIf="list.address.city; else dash">{{list.address.city}}</span></td>
+         <td><a href="javascript:void(0)"><span class="fa fa-edit" style="color: green; font-size: 20px;margin-right: 10px;"></span></a> <a href="javascript:void(0)" style="color: #f00; font-size: 20px;"><span class="fa fa-trash"></span></a></td>
+       </tr>
+     </tbody>
+   </table>
+</div>
+
+<ng-template #dash>---</ng-template>

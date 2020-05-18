@@ -18,7 +18,7 @@ export class UserService {
     headers: new HttpHeaders({ 'content-type': 'application/json' })
   };
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   /**
    * @description Method to getting error if occured
@@ -56,5 +56,79 @@ export class UserService {
     const body = res;
     return body || {};
   }
+
+  /**
+   * @description Method for getting user from server
+   * @author Virendra Pandey
+   * @date 2020-05-17
+   * @returns {Observable<any>}
+   * @memberof UserService
+   */
+  public getUsers(): Observable<any> {
+    return this._http.get(this.apiUrl, this.httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  /**
+   * @description Method for getting unique record by ID
+   * @author Virendra Pandey
+   * @date 2020-05-17
+   * @param {number} userID
+   * @returns {Observable<any>}
+   * @memberof UserService
+   */
+  public getUserByID(userID: number): Observable<any> {
+    // http://localhost:3000/data/1024
+    const url = `${this.apiUrl}/${userID}`;
+    return this._http.get(url, this.httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  /**
+   * @description Method for posting/sending data to server
+   * @author Virendra Pandey
+   * @date 2020-05-17
+   * @param {*} userRecord
+   * @returns {Observable<any>}
+   * @memberof UserService
+   */
+  public postUser(userRecord: any): Observable<any> {
+    return this._http.post(this.apiUrl, userRecord, this.httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  /**
+   * @description Method for updating data to server
+   * @author Virendra Pandey
+   * @date 2020-05-17
+   * @param {*} userRecord
+   * @returns {Observable<any>}
+   * @memberof UserService
+   */
+  public updateUser(userRecord: any): Observable<any> {
+    return this._http.put(this.apiUrl, userRecord, this.httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  /**
+   * @description Method for deleting user record
+   * @author Virendra Pandey
+   * @date 2020-05-17
+   * @param {*} userRecord
+   * @returns {Observable<any>}
+   * @memberof UserService
+   */
+  public deleteUser(userID: number): Observable<any> {
+    // http://localhost:3000/data/1024
+    const url = `${this.apiUrl}/${userID}`;
+    return this._http.delete(url, this.httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
 
 }

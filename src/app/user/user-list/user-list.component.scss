@@ -1,0 +1,17 @@
+
+.heading{
+  display: flex;
+  align-items: center;
+}
+
+.table-head{
+  background-color: rgb(119, 27, 146);
+  color: #ffffff;
+}
+.list-title{
+  padding-right: 20px;
+  .table-caption{
+    text-decoration: underline;
+    color: indigo;
+  }
+}
