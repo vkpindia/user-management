@@ -9,10 +9,12 @@ import { UserService } from '../../services';
 export class UserListComponent implements OnInit {
 
   public usersList: Array<any>;
+  public showForm: boolean;
   constructor(private _userService: UserService) { }
 
   ngOnInit(): void {
     // method call
+    this.showForm = false;
     this.getUserList();
   }
 
@@ -31,5 +33,15 @@ export class UserListComponent implements OnInit {
     }, err => {
       console.log(err);
     });
+  }
+
+  /**
+   * @description Method to open form
+   * @author Virendra Pandey
+   * @date 2020-05-18
+   * @memberof UserListComponent
+   */
+  public openForm(): void {
+    this.showForm = true;
   }
 }

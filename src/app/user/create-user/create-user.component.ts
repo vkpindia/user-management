@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-user',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateUserComponent implements OnInit {
 
+/*   public fname: string;
+  public lname: string;
+  public city: string;
+  public email: string;
+  public pincode: string; */
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+ /*  public onSubmit(userForm: NgForm): void{
+    console.log('userForm', userForm.value);
+    alert('Form Submitted');
+    userForm.reset();
+  } */
+  public onSubmit(userForm: NgForm): void{
+    console.log('userForm', userForm.value);
+    alert('Form Submitted');
+    userForm.reset();
+  }
 }
