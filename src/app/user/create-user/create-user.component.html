@@ -39,4 +39,80 @@
     </div>
   </form> -->
 
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="">Name:</label>
+      <input type="text" class="form-control" formControlName="name">
+      <div *ngIf="f.name.invalid && isValidFormSubmitted !=null && !isValidFormSubmitted">
+        <span class="error" *ngIf="f.name.errors.required">Name is required</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Designation:</label>
+      <input type="text" class="form-control" formControlName="designation">
+      <div *ngIf="f.designation.invalid && isValidFormSubmitted !=null && !isValidFormSubmitted">
+        <span class="error" *ngIf="f.designation.errors.required">Designation is required</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Phone:</label>
+      <input type="tel" class="form-control" formControlName="phone">
+      <div *ngIf="f.phone.invalid && isValidFormSubmitted !=null && !isValidFormSubmitted">
+        <span class="error" *ngIf="f.phone.errors.required">Phone is required</span>
+        <span class="error" *ngIf="f.phone.errors.pattern">Phone should be number only</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Email:</label>
+      <input type="email" class="form-control" formControlName="email">
+    </div>
+    <div class="form-group">
+      <label for="">Age:</label>
+      <input type="number" class="form-control" formControlName="age">
+    </div>
+    <div class="form-group">
+      <label for="">Gender:</label>
+      <div class="radio">
+        <label for=""><input type="radio" class="form-control" value="male" formControlName="gender">Male</label>
+      </div>
+      <div class="radio">
+        <label for=""><input type="radio" class="form-control" value="female" formControlName="gender">Female</label>
+      </div>
+    </div>
+    <div formGroupName="address">
+      <div class="form-group">
+        <label for="">Country:</label>
+        <select name="" id="" class="form-control" formControlName="country">
+          <option>Select Country</option>
+          <option value="India">India</option>
+          <option value="USA">USA</option>
+          <option value="UK">USA</option>
+        </select>
+        <div *ngIf="userForm.get('address.country').invalid && isValidFormSubmitted !=null && !isValidFormSubmitted">
+          <span class="error" *ngIf="userForm.get('address.country').errors.required">Country is required</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">State:</label>
+        <select name="" id="" class="form-control" formControlName="state">
+          <option>Select State</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Telangana">Telangana</option>
+          <option value="Karnataka">Karnataka</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">City:</label>
+        <select name="" id="" class="form-control" formControlName="city">
+          <option>Select City</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Bengaluru">Bengaluru</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </form>
 </div>
