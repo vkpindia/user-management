@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { UserService } from '../../services';
 
 @Component({
@@ -42,7 +42,7 @@ export class CreateUserComponent implements OnInit {
      alert('Form Submitted');
      userForm.reset();
    } */
-  public get f() {
+  public get f(): { [key: string]: AbstractControl } {
     return this.userForm.controls;
   }
 
