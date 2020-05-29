@@ -108,8 +108,9 @@ export class UserService {
    * @returns {Observable<any>}
    * @memberof UserService
    */
-  public updateUser(userRecord: any): Observable<any> {
-    return this._http.put(this.apiUrl, userRecord, this.httpOptions).pipe(
+  public updateUser(userID: number, userRecord: any): Observable<any> {
+    const url = `${this.apiUrl}/${userID}`;
+    return this._http.put(url, userRecord , this.httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }

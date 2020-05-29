@@ -65,10 +65,17 @@
     <div class="form-group">
       <label for="">Email:</label>
       <input type="email" class="form-control" formControlName="email">
+      <div *ngIf="f.email.invalid && isValidFormSubmitted !=null && !isValidFormSubmitted">
+        <span class="error" *ngIf="f.email.errors.required">Email is required</span>
+        <span class="error" *ngIf="f.email.errors.pattern">Email should be in valid format</span>
+      </div>
     </div>
     <div class="form-group">
       <label for="">Age:</label>
       <input type="number" class="form-control" formControlName="age">
+      <div *ngIf="f.age.invalid && isValidFormSubmitted !=null && !isValidFormSubmitted">
+        <span class="error" *ngIf="f.age.errors.required">Age is required</span>
+      </div>
     </div>
     <div class="form-group">
       <label for="">Gender:</label>
@@ -77,6 +84,9 @@
       </div>
       <div class="radio">
         <label for=""><input type="radio" class="form-control" value="female" formControlName="gender">Female</label>
+      </div>
+      <div *ngIf="f.gender.invalid && isValidFormSubmitted !=null && !isValidFormSubmitted">
+        <span class="error" *ngIf="f.gender.errors.required">Gender is required</span>
       </div>
     </div>
     <div formGroupName="address">
@@ -100,6 +110,9 @@
           <option value="Telangana">Telangana</option>
           <option value="Karnataka">Karnataka</option>
         </select>
+        <div *ngIf="userForm.get('address.state').invalid && isValidFormSubmitted !=null && !isValidFormSubmitted">
+          <span class="error" *ngIf="userForm.get('address.state').errors.required">State is required</span>
+        </div>
       </div>
       <div class="form-group">
         <label for="">City:</label>
@@ -109,10 +122,14 @@
           <option value="Mumbai">Mumbai</option>
           <option value="Bengaluru">Bengaluru</option>
         </select>
+        <div *ngIf="userForm.get('address.city').invalid && isValidFormSubmitted !=null && !isValidFormSubmitted">
+          <span class="error" *ngIf="userForm.get('address.city').errors.required">State is required</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary">Submit</button>
+      <button class="btn btn-primary mr-2">{{buttomLabel}}</button>
+      <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
     </div>
   </form>
 </div>

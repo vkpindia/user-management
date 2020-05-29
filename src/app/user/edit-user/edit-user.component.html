@@ -1,1 +1,4 @@
-<p>edit-user works!</p>
+<div *ngIf="showForm">
+  <app-create-user [userRecord]="userRecord" (ngFormCancel)="onFormCancel($event)" (ngFormSubmit)="onFormSubmit($event)"></app-create-user>
+</div>
+<!-- (ngFormCancel)="onCancel($event)" (ngFormSubmit)="onFormSubmit($event)" -->
